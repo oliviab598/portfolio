@@ -53,64 +53,139 @@ const navButtonStyle = {
   },
 };
 
-const Navbar = () => (
-  <AppBar
-    position="sticky"
-    elevation={0}
-    sx={{
-      backgroundColor: "#121212",
-      borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-      transition: "all 0.3s ease-in-out",
-      "&:hover": {
-        transform: "translateY(2px)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
-      },
-    }}
-  >
-    <Toolbar>
-      <Typography
-        variant="h6"
-        component={Link}
-        smooth
-        to="#home"
-        sx={{
-          flexGrow: 1,
-          fontWeight: 300,
-          letterSpacing: 1,
-          fontSize: "1.2rem",
-          cursor: "pointer",
-          textDecoration: "none",
-          color: "#F2F3F5",
-          transition: "color 0.3s ease-in-out",
-          "&:hover": {
-            color: "#007FFF",
-          },
-        }}
-      >
-        olivia brown
-      </Typography>
-      <Button component={Link} smooth to="#home" sx={navButtonStyle}>
-        home
-      </Button>
-
-      <Button component={Link} smooth to="#about" sx={navButtonStyle}>
-        about
-      </Button>
-
-      <Button component={Link} smooth to="#experience" sx={navButtonStyle}>
-        experience
-      </Button>
-
-      <Button component={Link} smooth to="#projects" sx={navButtonStyle}>
-        projects
-      </Button>
-
-      <Button component={Link} smooth to="#contact" sx={navButtonStyle}>
-        contact
-      </Button>
-    </Toolbar>
-  </AppBar>
+const ContactIcons = ({ handleEmailClick }) => (
+  <Box sx={{ display: "flex", gap: 1, ml: 2 }}>
+    <IconButton
+      href="https://github.com/oliviab598"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ color: "#ffffff" }}
+    >
+      <GitHub fontSize="small" />
+    </IconButton>
+    <IconButton
+      href="https://linkedin.com/in/oliviab598"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ color: "#ffffff" }}
+    >
+      <LinkedIn fontSize="small" />
+    </IconButton>
+    <IconButton onClick={handleEmailClick} style={{ color: "#ffffff" }}>
+      <Email fontSize="small" />
+    </IconButton>
+  </Box>
 );
+
+const ContactPageIcons = ({ handleEmailClick }) => (
+  <Box sx={{ display: "flex", gap: 1 }}>
+    <IconButton
+      href="https://github.com/oliviab598"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ color: "#ffffff" }}
+    >
+      <GitHub fontSize="large" />
+    </IconButton>
+    <IconButton
+      href="https://linkedin.com/in/oliviab598"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ color: "#ffffff" }}
+    >
+      <LinkedIn fontSize="large" />
+    </IconButton>
+    <IconButton onClick={handleEmailClick} style={{ color: "#ffffff" }}>
+      <Email fontSize="large" />
+    </IconButton>
+  </Box>
+);
+
+const Navbar = () => {
+  const [showSnackbar, setShowSnackbar] = useState(false);
+
+  const handleEmailClick = () => {
+    navigator.clipboard.writeText("olivia.b.598@gmail.com");
+    setShowSnackbar(true);
+  };
+
+  return (
+    <AppBar
+      position="sticky"
+      elevation={0}
+      sx={{
+        backgroundColor: "#121212",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        transition: "all 0.3s ease-in-out",
+        "&:hover": {
+          transform: "translateY(2px)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+        },
+      }}
+    >
+      <Toolbar>
+        <Typography
+          variant="h6"
+          component={Link}
+          smooth
+          to="#home"
+          sx={{
+            flexGrow: 0,
+            fontWeight: 300,
+            letterSpacing: 1,
+            fontSize: "1.2rem",
+            cursor: "pointer",
+            textDecoration: "none",
+            color: "#F2F3F5",
+            transition: "color 0.3s ease-in-out",
+            "&:hover": {
+              color: "#007FFF",
+            },
+          }}
+        >
+          olivia brown
+        </Typography>
+
+        <ContactIcons handleEmailClick={handleEmailClick} />
+
+        <Box sx={{ flexGrow: 1 }} />
+
+        <Button component={Link} smooth to="#home" sx={navButtonStyle}>
+          home
+        </Button>
+
+        <Button component={Link} smooth to="#about" sx={navButtonStyle}>
+          about
+        </Button>
+
+        <Button component={Link} smooth to="#experience" sx={navButtonStyle}>
+          experience
+        </Button>
+
+        <Button component={Link} smooth to="#projects" sx={navButtonStyle}>
+          projects
+        </Button>
+
+        <Button component={Link} smooth to="#contact" sx={navButtonStyle}>
+          contact
+        </Button>
+
+        <Snackbar
+          open={showSnackbar}
+          autoHideDuration={2000}
+          onClose={() => setShowSnackbar(false)}
+          message="Email copied to clipboard!"
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          sx={{
+            "& .MuiSnackbarContent-root": {
+              backgroundColor: "#4caf50",
+            },
+          }}
+        />
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 const Section = ({ children, id }) => {
   const { ref, inView } = useInView({
@@ -206,42 +281,8 @@ const TypingText = ({ text }) => {
   );
 };
 
-// Contact Icons Component
-const ContactIcons = ({ handleEmailClick }) => (
-  <Box sx={{ display: "flex", gap: 2 }}>
-    <IconButton
-      href="https://github.com/oliviab598"
-      target="_blank"
-      style={{ color: "#ffffff" }}
-    >
-      <GitHub fontSize="large" />
-    </IconButton>
-    <IconButton
-      href="https://linkedin.com/in/oliviab598"
-      target="_blank"
-      style={{ color: "#ffffff" }}
-    >
-      <LinkedIn fontSize="large" />
-    </IconButton>
-    <IconButton onClick={handleEmailClick} style={{ color: "#ffffff" }}>
-      <Email fontSize="large" />
-    </IconButton>
-  </Box>
-);
-
 const Home = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
-
-  const handleEmailClick = () => {
-    navigator.clipboard
-      .writeText("olivia.b.598@gmail.com")
-      .then(() => {
-        setOpenSnackbar(true);
-      })
-      .catch((err) => {
-        console.error("Failed to copy email:", err);
-      });
-  };
 
   return (
     <Grid
@@ -284,19 +325,11 @@ const Home = () => {
           component="a"
           href={process.env.PUBLIC_URL + "/Olivia_Brown_Resume.pdf"}
           download="Olivia_Brown_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           download resume
         </Button>
-        <Box
-          sx={{
-            marginTop: 2,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <ContactIcons handleEmailClick={handleEmailClick} />
-        </Box>
       </Grid>
       <Snackbar
         open={openSnackbar}
@@ -335,32 +368,49 @@ const About = () => {
           <Typography variant="h4" gutterBottom>
             About Me
           </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 2 }}>
-            Hi! I’m <span className="highlight-on-hover">Olivia Brown</span>, an
-            aspiring{" "}
-            <span className="highlight-on-hover">software engineer</span> with a
-            passion for creating scalable, high-quality systems. I enjoy solving
-            complex problems and designing solutions to meet user needs.
-          </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 2 }}>
-            Currently, I’m pursuing a B.S. in Computer Science at{" "}
-            <span className="highlight-on-hover">Oberlin College</span>, where
-            I’m actively involved in projects ranging from{" "}
-            <span className="highlight-on-hover">
-              decentralized peer-to-peer networks
-            </span>{" "}
-            to{" "}
-            <span className="highlight-on-hover">reinforcement learning</span>.
-            My work includes using blockchain, cryptography, and advanced
-            algorithms to build innovative machine learning solutions.
-          </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 2 }}>
-            Beyond coding, I’m an avid{" "}
-            <span className="highlight-on-hover">musician</span> who loves
-            performing and producing music. Under the artist name "Olivia
-            Brown," my tracks have reached over 3000 listeners on various
-            platforms.
-          </Typography>
+          <div className="about-text-content">
+            <Typography variant="body1" sx={{ marginBottom: 2 }}>
+              Hi! I’m Olivia Brown, an aspiring software engineer with a passion
+              for creating scalable, high-quality systems. I enjoy solving
+              complex problems and designing solutions to meet user needs.
+            </Typography>
+            <Typography variant="body1" sx={{ marginBottom: 2 }}>
+              Currently, I’m pursuing a B.S. in Computer Science at Oberlin
+              College, where I’m actively involved in projects ranging from{" "}
+              <a
+                href="https://en.wikipedia.org/wiki/Peer-to-peer"
+                className="artist-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                decentralized peer to peer networks
+              </a>{" "}
+              to{" "}
+              <a
+                href="https://en.wikipedia.org/wiki/Reinforcement_learning"
+                className="artist-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                reinforcement learning
+              </a>
+              . My work includes using blockchain, cryptography, and advanced
+              algorithms to build innovative machine learning solutions.
+            </Typography>
+            <Typography variant="body1" sx={{ marginBottom: 2 }}>
+              Beyond coding, I’m an avid musician who loves performing and
+              producing music. Under the artist name{" "}
+              <a
+                href="https://linktr.ee/oliviab598"
+                className="artist-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Olivia Brown
+              </a>
+              , my tracks have reached over 3000 listeners on various platforms.
+            </Typography>
+          </div>
         </div>
       </div>
     </Section>
@@ -630,21 +680,75 @@ const Contact = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
+          gap: 3,
+          maxWidth: "600px",
+          margin: "0 auto",
           textAlign: "center",
-          height: "100%", // Ensure it takes full height of the section
+          padding: "2rem 1rem",
         }}
       >
-        <Typography variant="h4" gutterBottom>
-          Contact
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{
+            fontWeight: "bold",
+            background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          Let's Connect!
         </Typography>
-        <ContactIcons handleEmailClick={handleEmailClick} />
+
+        <Typography variant="body1" sx={{ mb: 3, color: "text.secondary" }}>
+          I'm always excited to collaborate on cool projects and discuss new
+          opportunities. Whether you have a question or just want to say hi,
+          feel free to reach out!
+        </Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
+            justifyContent: "center",
+            "& .MuiIconButton-root": {
+              transition: "transform 0.2s, background-color 0.2s",
+              padding: "15px",
+              backgroundColor: "rgba(255, 255, 255, 0.05)",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+              },
+            },
+          }}
+        >
+          <ContactPageIcons handleEmailClick={handleEmailClick} />
+        </Box>
+
+        <Typography
+          variant="body2"
+          sx={{
+            mt: 2,
+            color: "text.secondary",
+            fontStyle: "italic",
+          }}
+        >
+          Prefer email? Click the mail icon to copy my email address.
+        </Typography>
+
         <Snackbar
           open={openSnackbar}
           message="Email copied to clipboard!"
           autoHideDuration={2000}
           onClose={() => setOpenSnackbar(false)}
+          sx={{
+            "& .MuiSnackbarContent-root": {
+              backgroundColor: "#4caf50",
+              borderRadius: "8px",
+            },
+          }}
         />
       </Box>
     </Section>
