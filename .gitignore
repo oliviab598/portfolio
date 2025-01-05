@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Build and cache directories
+build/
+dist/
+.cache/
+docs/.cache/
+**/default-development/
