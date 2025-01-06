@@ -20,9 +20,8 @@ import {
 } from "@mui/icons-material";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
-import { useInView } from "react-intersection-observer"; // Import for visibility animations
-import "./App.css"; // Ensure the correct CSS file is imported
-
+import { useInView } from "react-intersection-observer";
+import "./App.css";
 const navButtonStyle = {
   textTransform: "none",
   fontSize: "1rem",
@@ -189,8 +188,8 @@ const Navbar = () => {
 
 const Section = ({ children, id }) => {
   const { ref, inView } = useInView({
-    triggerOnce: false, // Trigger each time the section comes into view
-    threshold: 0.1, // Section is in view when 10% of it is visible
+    triggerOnce: false,
+    threshold: 0.1,
   });
 
   return (
@@ -199,9 +198,9 @@ const Section = ({ children, id }) => {
       ref={ref}
       className={`page-enter ${inView ? "page-enter-active" : ""}`}
       style={{
-        padding: "6em 20em", // Added more padding for bigger margins
-        margin: "0 auto", // Center content
-        maxWidth: "1200px", // Optional: limit the width of the content for readability
+        padding: "6em 20em",
+        margin: "0 auto",
+        maxWidth: "1200px",
         backgroundColor: "#121212",
         color: "#ffffff",
       }}
@@ -215,11 +214,10 @@ const TypingText = ({ text }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingDone, setIsTypingDone] = useState(false);
 
-  // Typing speed configuration
-  const baseSpeed = 80; // Base typing speed (ms)
-  const variance = 40; // Random variance to add natural feel
-  const wordPause = 200; // Pause after spaces
-  const punctuationPause = 350; // Longer pause for punctuation
+  const baseSpeed = 80;
+  const variance = 40;
+  const wordPause = 200;
+  const punctuationPause = 350;
 
   useEffect(() => {
     let index = 0;
@@ -230,16 +228,14 @@ const TypingText = ({ text }) => {
         setDisplayedText(text.slice(0, index + 1));
         index++;
 
-        // Calculate delay based on character context
         let delay = baseSpeed + Math.random() * variance;
 
-        // Add pauses for natural rhythm
         if (char === " ") {
-          delay += wordPause; // Pause after words
+          delay += wordPause;
         } else if ([",", ".", "!", "?", ":"].includes(char)) {
-          delay += punctuationPause; // Longer pause for punctuation
+          delay += punctuationPause;
         } else if (char === "'" && nextChar === "m") {
-          delay += wordPause / 2; // Slight pause before "m" in "I'm"
+          delay += wordPause / 2;
         }
 
         setTimeout(typeCharacter, delay);
@@ -351,16 +347,14 @@ const About = () => {
   return (
     <Section id="about">
       <div className="about-grid">
-        {/* Left Column: Image or Illustration */}
         <div className="about-image">
           <img
-            src={`${process.env.PUBLIC_URL}/profile.jpg`} // Replace with your profile picture
+            src={`${process.env.PUBLIC_URL}/profile.jpg`}
             alt="Olivia Brown"
             className="profile-picture"
           />
         </div>
 
-        {/* Right Column: Bio */}
         <div
           className={`about-content ${hovered ? "hovered" : ""}`}
           onMouseEnter={handleMouseEnter}
