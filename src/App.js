@@ -177,7 +177,7 @@ const Navbar = () => {
           anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
           sx={{
             "& .MuiSnackbarContent-root": {
-              backgroundColor: "#4caf50",
+              backgroundColor: "#299D8F",
             },
           }}
         />
@@ -312,7 +312,7 @@ const Home = () => {
           style={{ color: "#A4A4A4" }}
           sx={{ marginTop: 2 }}
         >
-          an aspiring software engineer
+          a (soon to be) software engineer
         </Typography>
         <Button
           variant="contained"
@@ -364,9 +364,13 @@ const About = () => {
           </Typography>
           <div className="about-text-content">
             <Typography variant="body1" sx={{ marginBottom: 2 }}>
-              Hi! I’m Olivia Brown, an aspiring software engineer with a passion
-              for creating scalable, high-quality systems. I enjoy solving
-              complex problems and designing solutions to meet user needs.
+              I’m Olivia Brown, a (soon to be) software engineer at Bank of
+              America. I love writing clean, efficient code and building tools
+              that make people’s lives easier. My projects can balance
+              thoughtful design and solid engineering, and I love to collaborate
+              with others to bring ideas to life. Whether I’m fine-tuning UI or
+              refactoring backend logic, I’m always looking for ways to make
+              systems more intuitive and exciting to use.
             </Typography>
             <Typography variant="body1" sx={{ marginBottom: 2 }}>
               Currently, I’m pursuing a B.S. in Computer Science at Oberlin
@@ -392,8 +396,8 @@ const About = () => {
               algorithms to build innovative machine learning solutions.
             </Typography>
             <Typography variant="body1" sx={{ marginBottom: 2 }}>
-              Beyond coding, I’m an avid musician who loves performing and
-              producing music. Under the artist name{" "}
+              Beyond coding, I’m an avid musician who loves playing guitar,
+              singing, songwriting, and producing music. Under the artist name{" "}
               <a
                 href="https://linktr.ee/oliviab598"
                 className="artist-link"
@@ -402,7 +406,8 @@ const About = () => {
               >
                 Olivia Brown
               </a>
-              , my tracks have reached over 3000 listeners on various platforms.
+              , my tracks have reached over 10,000 listeners on various
+              platforms.
             </Typography>
           </div>
         </div>
@@ -417,7 +422,49 @@ const Experience = () => (
       Experience
     </Typography>
     <div className="experience-grid">
-      {/* Bank of America Internship */}
+      {/* <div className="experience-row">
+        <Typography variant="body2" className="experience-dates">
+          July 2025 - current
+        </Typography>
+        <div
+          className="experience-content section-card"
+          onClick={() =>
+            window.open(
+              "https://www.bankofamerica.com",
+              "_blank",
+              "noopener noreferrer"
+            )
+          }
+          style={{ cursor: "pointer" }}
+        >
+          <div className="experience-header">
+            <Typography variant="h6">
+              <a
+                href="https://www.bankofamerica.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
+                Software Engineer · Bank of America
+              </a>
+            </Typography>
+            <IconButton
+              href="https://www.bankofamerica.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="experience-link-icon"
+            >
+              <ArrowOutwardIcon fontSize="small" />
+            </IconButton>
+          </div>
+          <Typography variant="body2" sx={{ marginTop: 1 }}></Typography>
+          <div className="technologies">
+            <span className="technology-tag">Python</span>
+            <span className="technology-tag">Quartz</span>
+            <span className="technology-tag">Sandra</span>
+          </div>
+        </div>
+      </div> */}
       <div className="experience-row">
         <Typography variant="body2" className="experience-dates">
           June 2024 — August 2024
@@ -476,8 +523,6 @@ const Experience = () => (
           </div>
         </div>
       </div>
-
-      {/* Home Depot Internship */}
       <div className="experience-row">
         <Typography variant="body2" className="experience-dates">
           May 2023 — July 2023
@@ -697,9 +742,8 @@ const Contact = () => {
         </Typography>
 
         <Typography variant="body1" sx={{ mb: 3, color: "text.secondary" }}>
-          I'm always excited to collaborate on cool projects and discuss new
-          opportunities. Whether you have a question or just want to say hi,
-          feel free to reach out!
+          I'm always happy to chat or collaborate on something new. Feel free to
+          reach out :)
         </Typography>
 
         <Box
@@ -720,7 +764,7 @@ const Contact = () => {
         >
           <ContactPageIcons handleEmailClick={handleEmailClick} />
         </Box>
-
+        {/* 
         <Typography
           variant="body2"
           sx={{
@@ -729,8 +773,8 @@ const Contact = () => {
             fontStyle: "italic",
           }}
         >
-          Prefer email? Click the mail icon to copy my email address.
-        </Typography>
+          Click the mail icon to copy my email address.
+        </Typography> */}
 
         <Snackbar
           open={openSnackbar}
@@ -739,7 +783,7 @@ const Contact = () => {
           onClose={() => setOpenSnackbar(false)}
           sx={{
             "& .MuiSnackbarContent-root": {
-              backgroundColor: "#4caf50",
+              backgroundColor: "#299D8F",
               borderRadius: "8px",
             },
           }}
