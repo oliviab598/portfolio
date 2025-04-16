@@ -1,0 +1,360 @@
+/* Gradient Background for the whole page */
+html {
+  background: #0d0d0d;
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+  font-family: "Inter", sans-serif;
+  color: #f2f3f5;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.page-enter {
+  opacity: 0;
+}
+
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #ffffff;
+  animation: typing-cursor 1.5s step-end infinite;
+}
+
+.cursor-blink {
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes typing-cursor {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #ffffff;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: #ffffff;
+  }
+  50% {
+    border-color: transparent;
+  }
+}
+
+button,
+.MuiButton-root,
+.MuiIconButton-root {
+  transition: all 0.3s ease-in-out;
+  background-color: #121212;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+button:hover,
+.MuiButton-root:hover,
+.MuiIconButton-root:hover {
+  background-color: #03a9f4;
+  transform: scale(1.05);
+  border-color: #03a9f4;
+}
+
+.card {
+  border-radius: 12px;
+  background-color: #1e1e1e;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2em;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+}
+
+.about-content {
+  color: #f2f3f5;
+}
+
+.about-content .highlight-on-hover {
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.about-content:hover .highlight-on-hover {
+  color: #03a9f4;
+  font-weight: bold;
+}
+
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.project-card {
+  flex: 1 1 300px;
+  max-width: 400px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(3, 169, 244, 0.5);
+}
+
+.project-card h6 {
+  color: #f2f3f5;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
+
+.project-card p {
+  color: #a4a4a4;
+}
+
+.project-card a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project-card a:visited {
+  color: inherit;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+  color: #03a9f4;
+}
+
+.project-card a:active {
+  color: #03a9f4;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.experience-row {
+  display: contents;
+}
+
+.experience-dates {
+  font-size: 0.9rem;
+  color: #a4a4a4;
+  text-align: right;
+  padding-right: 1em;
+  border-right: 2px solid #03a9f4;
+}
+
+.experience-content {
+  padding-left: 1em;
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.experience-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(3, 169, 244, 0.5);
+}
+
+.experience-content h6 {
+  color: #f2f3f5;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
+
+.experience-content p {
+  color: #a4a4a4;
+}
+
+.experience-content a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.experience-content a:visited {
+  color: inherit;
+}
+
+.experience-content a:hover {
+  text-decoration: underline;
+  color: #03a9f4;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.experience-link-icon {
+  transition: transform 0.3s ease;
+  color: #03a9f4;
+}
+
+.experience-content:hover .experience-link-icon {
+  transform: translateX(5px);
+}
+
+.technologies {
+  margin-top: 1em;
+}
+
+.technology-tag {
+  display: inline-block;
+  margin: 4px 8px 0 0;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background-color: #2a9d8f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.section-card-link {
+  display: block;
+  text-decoration: none;
+}
+
+.section-card {
+  position: relative;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.section-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(3, 169, 244, 0.4);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-link-icon {
+  transition: transform 0.3s ease;
+  color: #03a9f4;
+}
+
+.project-card:hover .project-link-icon {
+  transform: translateX(5px);
+}
+
+.button-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(3, 169, 244, 0.5);
+}
+
+.artist-link {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px dotted #666;
+  padding-bottom: 1px;
+}
+
+.about-text-content:hover .artist-link {
+  color: #03a9f4;
+  font-weight: bold;
+  border-bottom: 1px dotted #03a9f4;
+}
+
+.artist-link:hover {
+  border-bottom: 1px solid #03a9f4;
+}
+
+.artist-link::after {
+  content: "↗";
+  font-size: 0.8em;
+  margin-left: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-text-content:hover .artist-link::after {
+  opacity: 0.7;
+}
